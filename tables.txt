@@ -1,0 +1,43 @@
+CREATE TABLE wop_meme (
+  `meme_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `description` text NOT NULL,
+  `like` int(11) NULL,
+  `comment` int(11) NULL,
+  `weight` float NOT NULL,
+  `owner` int(11) NOT NULL,
+  `filename` text NOT NULL,
+  `created` date NULL,
+  `birthdate` date DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO wop_meme (`meme_id`, `name`, `description`, `like`, `comment`, `weight`, `owner`, `filename`, `created`, `birthdate`) VALUES
+(1, 'Frank', 'Frankinmeemu', 2, 6, 5, 1, 'http://placekitten.com/400/300', '2016-08-04', '2010-08-04'),
+(2, 'James', 'Jamesinnmeemudesc', 8, 5, 11, 2, 'http://placekitten.com/400/302', '2000-07-04', '2011-10-07');
+
+CREATE TABLE wop_user (
+  `user_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `email` text NOT NULL,
+  `password` text NOT NULL,
+  `role` int(1) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO wop_user (`user_id`, `name`, `email`, `password`, `role`) VALUES
+(1, 'admin', 'admin@metropolia.fi', 'asdf', 0),
+(2, 'Jane Doez', 'jane@metropolia.fi', 'qwer', 1),
+(3, 'John Doe', 'john@metropolia.fi', '1234', 1);
+
+
+ALTER TABLE `wop_meme`
+  ADD PRIMARY KEY (`meme_id`);
+
+ALTER TABLE `wop_user`
+  ADD PRIMARY KEY (`user_id`);
+
+
+ALTER TABLE `wop_meme`
+  MODIFY `meme_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+ALTER TABLE `wop_user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
